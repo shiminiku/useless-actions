@@ -1,0 +1,17 @@
+name: Useless Machine
+run-name: "{{github.ref}} - {{github.sha}}"
+on: [push]
+jobs:
+  UselessMachine:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out
+        uses: actions/checkout@v4
+      - name: Work for nothing
+        run: |
+          echo "Useless Text ($(date))" >> dummy.txt
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add .
+          git commit -m "[useless] commit"
+          git push
